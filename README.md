@@ -1,102 +1,38 @@
 # dotfiles
 
-Personal dotfiles for macOS — a Zsh shell setup (Oh My Zsh + Powerlevel10k), a Ghostty terminal theme, a nano config with syntax highlighting, and some [pi](https://github.com/badlogic/pi-mono) agent extensions.
-
-## What's in here
-
-| Path | Purpose |
-| --- | --- |
-| `.zshrc` | Zsh config: Oh My Zsh, Powerlevel10k prompt, plugins, aliases, helper functions. |
-| `.zshenv` | Loads nvm (Node version manager). |
-| `.zprofile` | Loads Homebrew's shell environment. |
-| `.p10k.zsh` | Powerlevel10k prompt configuration (generated via `p10k configure`). |
-| `.gitconfig` | Git defaults: `nano` as editor, `main` as default branch, pull with rebase. |
-| `.ghostty/config` | Ghostty terminal: theme, font (JetBrains Mono), keybindings, window behavior. |
-| `.nano/` | nano config with syntax highlighting for many languages, plus a local copy of [`scopatz/nanorc`](https://github.com/scopatz/nanorc). |
-| `.pi/agent/extensions/` | Custom [pi](https://github.com/badlogic/pi-mono) agent extensions. |
-
-## Prerequisites
-
-Before installing, make sure you have:
-
-- **zsh** (the default shell on macOS)
-- **[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)**
-- **[Powerlevel10k](https://github.com/romkatv/powerlevel10k)**
-- **[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)** and **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)** (Oh My Zsh plugins)
-- **[Ghostty](https://ghostty.org)** (for the terminal config)
-- **[nvm](https://github.com/nvm-sh/nvm)**
-- **[thefuck](https://github.com/sobolevn/thefuck)** (optional, used in `.zshrc`)
-- **Homebrew** (used in `.zprofile`)
+Personal dotfiles for macOS — Zsh (Oh My Zsh + Powerlevel10k), Ghostty, nano, and [pi](https://github.com/badlogic/pi-mono) extensions.
 
 ## Install
 
-This repo uses the **bare repository** pattern: the Git repo lives at `~/.dotfiles` and is used as the source of truth for files in your home directory.
+This repo uses a bare repository at `~/.dotfiles` as the source of truth for files in `$HOME`.
 
 ```sh
-# Clone the repo into a bare repo at ~/.dotfiles
 git clone --bare https://github.com/azmainadel/dotfiles.git ~/.dotfiles
-
-# Make the bare repo manage files in your home directory
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-# List available dotfiles in the repo
-dotfiles checkout
-
-# Check out (copy) a dotfile into your home directory, e.g. .zshrc
-dotfiles checkout .zshrc
+dotfiles checkout          # list available dotfiles
+dotfiles checkout .zshrc   # copy one into your home directory
 ```
 
-Afterward you can manage your dotfiles with the `dotfiles` alias:
+Then manage changes with the same alias: `dotfiles status` / `add` / `commit` / `pull` / `push`.
+
+## Contents
+
+| Path | Purpose |
+| --- | --- |
+| `.zshrc` | Zsh config, aliases, plugins, `ports` helper |
+| `.zshenv` / `.zprofile` | Loads nvm / Homebrew |
+| `.p10k.zsh` | Powerlevel10k prompt config |
+| `.gitconfig` | Git defaults (nano editor, `main`, rebase on pull) |
+| `.ghostty/config` | Ghostty theme, font, keybindings |
+| `.nano/` | Syntax highlighting (from [`scopatz/nanorc`](https://github.com/scopatz/nanorc)) |
+| `.pi/agent/extensions/` | pi extensions |
+
+## Customize
 
 ```sh
-dotfiles status              # see changes to your dotfiles
-dotfiles add .zshrc          # stage a change
-dotfiles commit -m "..."     # commit a change
-dotfiles push                # push to GitHub
-dotfiles pull                # pull the latest
+p10k configure          # regenerate the prompt
+sh ~/.nano/install.sh   # update nano syntax files
 ```
 
-> **Note:** These dotfiles reference macOS-specific paths (e.g. Homebrew at `/opt/homebrew`) and a hardcoded pnpm path. Adjust to match your machine.
-
-## Shell features
-
-A few things `.zshrc` sets up beyond the defaults:
-
-- **Powerlevel10k instant prompt** for a fast, flicker-free prompt on startup.
-- **Cached completion** (`compinit -C`) for quicker shell startup.
-- **`thefuck`** integration — corrects mistyped commands.
-- **`ports` function** — lists listening TCP ports with the PID, command, and working directory of each process (great for "what's running on :3000?").
-- Handy aliases:
-  - `zconf` → edit `~/.zshrc` in nano
-  - `dotfiles` → manage this dotfiles repo
-  - `python` → `python3`, `hm` → `cd ~`, `c` → `clear`, `x` → `exit`, `ls` → detailed colored listing
-
-## Customize the prompt
-
-The prompt is configured in `.p10k.zsh`. To regenerate it interactively:
-
-```sh
-p10k configure
-```
-
-## nano syntax highlighting
-
-`.nano/` contains a large set of syntax-highlighting definitions sourced from
-[`scopatz/nanorc`](https://github.com/scopatz/nanorc), pulled in via `include`
-lines in `.nano/nanorc`. To refresh them to the latest upstream version:
-
-```sh
-sh ~/.nano/install.sh
-```
-
-## pi agent extensions
-
-`.pi/agent/extensions/` contains a couple of custom extensions for the
-[pi](https://github.com/badlogic/pi-mono) coding agent:
-
-- `hide-footer.ts` — hides the TUI footer bar.
-- `pi-emote/` — configures the "emote" display (uses the `xyntherys` emote set).
-
-## License
-
-Feel free to use and adapt these dotfiles however you like.
+> Requires Oh My Zsh, Powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting, and Ghostty. Paths are macOS-specific.
