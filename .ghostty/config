@@ -6,7 +6,7 @@ unfocused-split-opacity = 0.6
 
 # font
 font-family = JetBrains Mono
-font-size = 14
+font-size = 13.5
 font-thicken = true
 font-feature = -liga
 
