@@ -1,0 +1,9 @@
+[user]
+	name = Azmain Adel
+	email = azmainadel47@gmail.cpom
+[core]
+	editor = nano
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
