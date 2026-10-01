@@ -5,5 +5,20 @@
 	editor = nano
 [init]
 	defaultBranch = main
+[alias]
+	st = status -sb
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate --all
+	unstage = reset HEAD --
+	last = log -1 HEAD --stat
+
 [pull]
 	rebase = true
+	rebase.autoStash = true
+
+[fetch]
+	prune = true
+
+[push]
+	autoSetupRemote = true
