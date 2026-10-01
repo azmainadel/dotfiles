@@ -12,6 +12,7 @@
 	lg = log --oneline --graph --decorate --all
 	unstage = reset HEAD --
 	last = log -1 HEAD --stat
+	sync = !git fetch --prune origin && git reset --hard origin/$(git branch --show-current)
 
 [pull]
 	rebase = true
