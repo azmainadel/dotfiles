@@ -3,6 +3,7 @@
 	email = azmainadel47@gmail.cpom
 [core]
 	editor = nano
+	pager = less -FRX
 [init]
 	defaultBranch = main
 [alias]
