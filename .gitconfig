@@ -8,7 +8,9 @@
 	defaultBranch = main
 [alias]
 	st = status -sb
-	co = checkout
+	co = switch
+	sw = switch -c
+	ro = restore
 	br = branch
 	lg = log --oneline --graph --decorate --all
 	unstage = reset HEAD --
