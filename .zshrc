@@ -42,7 +42,6 @@ alias hm="cd ~"
 alias c="clear"
 alias x="exit"
 alias ls="ls -la --color=auto"
-alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # cached completion init (faster startup than re-scanning every shell)
 autoload -Uz compinit
@@ -69,6 +68,15 @@ ports() {
   awk 'NR==1{printf "\033[1;36m%s\033[0m\n",$0; next} 1'
 }
 
+# editor (fulgur)
+edit() {
+  if [ $# -eq 0 ]; then open -a Fulgur; return; fi
+  for f in "$@"; do
+    [ -e "$f" ] || touch "$f"
+    open -a Fulgur "$f"
+  done
+}
+
 # pnpm
 export PNPM_HOME='/Users/adel/Library/pnpm'
 case ":$PATH:" in
@@ -76,3 +84,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+export PATH="$HOME/.local/bin:$PATH"
