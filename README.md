@@ -27,6 +27,7 @@ Then manage changes with the same alias: `dotfiles status` / `add` / `commit` / 
 | `.ghostty/config` | Ghostty theme, font, keybindings |
 | `.nano/` | Syntax highlighting (from [`scopatz/nanorc`](https://github.com/scopatz/nanorc)) |
 | `.pi/agent/extensions/` | pi extensions |
+| `.claude/bondhu-statusline.mjs` | [Claude Code](https://code.claude.com) statusline — port of the [pi-bondhu](https://github.com/azmainadel/pi-emote) minimal line (tokens, cost, turns, context bar). Point `statusLine.command` at `node ~/.claude/bondhu-statusline.mjs` |
 
 ## Customize
 
