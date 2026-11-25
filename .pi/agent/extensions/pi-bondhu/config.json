@@ -1,0 +1,11 @@
+{
+  "size": 8,
+  "emotes": [
+    {
+      "model": "*",
+      "emote-set": "ascii"
+    }
+  ],
+  "debug": true,
+  "minimal": true
+}
